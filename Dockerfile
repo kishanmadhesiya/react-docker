@@ -9,7 +9,7 @@ WORKDIR /app
 
 # Installing dependencies
 COPY ./package.json ./
-RUN yarn install --ignore-scripts --unsafe-perm
+RUN yarn install --network-timeout 300000
 
 # Copying all the files in our project
 COPY . .
