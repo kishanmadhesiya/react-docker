@@ -2,7 +2,7 @@ FROM node:15.4 as build
 
 WORKDIR /react-app
 
-COPY package*.json .
+COPY package*.json ./
 
 
 RUN npm install
