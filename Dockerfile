@@ -1,5 +1,5 @@
 # Fetching the latest node image on apline linux
-FROM node:13.12.0-alpine
+FROM node:18-alpine
 
 # Declaring env
 ENV NODE_ENV production
