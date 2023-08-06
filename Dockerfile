@@ -15,7 +15,7 @@ COPY ./package.json ./
 COPY . .
 
 # Building our application
-RUN yarn run build
+RUN npm run build
 
 # Fetching the latest nginx image
 FROM nginx
