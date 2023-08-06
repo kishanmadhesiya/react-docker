@@ -1,23 +1,27 @@
-FROM node:15.4 as build
+# Fetching the latest node image on apline linux
+FROM node:alpine AS builder
 
-WORKDIR /react-app
+# Declaring env
+ENV NODE_ENV production
 
-COPY package*.json ./
+# Setting up the work directory
+WORKDIR /app
 
-
+# Installing dependencies
+COPY ./package.json ./
 RUN npm install
 
+# Copying all the files in our project
+COPY . .
 
-COPY ./ ./
-
-
+# Building our application
 RUN npm run build
 
+# Fetching the latest nginx image
+FROM nginx
 
-FROM nginx:1.19
+# Copying built assets from builder
+COPY --from=builder /app/build /usr/share/nginx/html
 
-
-COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
-
-
-COPY --from=build /react-app/build /usr/share/nginx/html
+# Copying our nginx.conf
+COPY ./nginx/nginx.conf /etc/nginx/conf.d/default.conf
