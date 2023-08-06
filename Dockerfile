@@ -1,5 +1,5 @@
 # Fetching the latest node image on apline linux
-FROM node:18-alpine
+FROM node:alpine AS builder
 
 # Declaring env
 ENV NODE_ENV production
@@ -15,7 +15,7 @@ RUN yarn install --ignore-scripts --unsafe-perm
 COPY . .
 
 # Building our application
-RUN yarn run build
+RUN npm run build
 
 # Fetching the latest nginx image
 FROM nginx
