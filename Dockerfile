@@ -15,7 +15,7 @@ RUN yarn install --ignore-scripts --unsafe-perm
 COPY . .
 
 # Building our application
-RUN npm run build
+RUN yarn run build
 
 # Fetching the latest nginx image
 FROM nginx
