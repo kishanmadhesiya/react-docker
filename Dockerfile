@@ -11,6 +11,8 @@ WORKDIR /app
 COPY ./package.json ./
 #RUN yarn install --ignore-scripts --unsafe-perm
 
+RUN npm install react-scripts
+
 # Copying all the files in our project
 COPY . .
 
