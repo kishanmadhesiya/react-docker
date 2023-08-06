@@ -9,7 +9,7 @@ WORKDIR /app
 
 # Installing dependencies
 COPY ./package.json ./
-RUN yarn install
+RUN yarn install --ignore-scripts --unsafe-perm
 
 # Copying all the files in our project
 COPY . .
