@@ -1,5 +1,5 @@
 # Fetching the latest node image on apline linux
-FROM node:alpine AS builder
+FROM node:13.12.0-alpine
 
 # Declaring env
 ENV NODE_ENV production
@@ -9,9 +9,7 @@ WORKDIR /app
 
 # Installing dependencies
 COPY ./package.json ./
-#RUN yarn install --ignore-scripts --unsafe-perm
-
-RUN npm install react-scripts
+RUN yarn install --ignore-scripts --unsafe-perm
 
 # Copying all the files in our project
 COPY . .
