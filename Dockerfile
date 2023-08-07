@@ -8,14 +8,14 @@ ENV NODE_ENV production
 WORKDIR /app
 
 # Installing dependencies
-COPY ./package.json ./
-RUN npm install --ignore-scripts --unsafe-perm
+COPY ./package.json ./yarn.lock ./
+RUN yarn
 
 # Copying all the files in our project
 COPY . .
 
 # Building our application
-RUN npm run build
+RUN yarn run build
 
 # Fetching the latest nginx image
 FROM nginx
